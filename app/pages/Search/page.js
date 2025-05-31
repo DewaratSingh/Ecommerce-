@@ -11,52 +11,52 @@ export default function Home() {
   {
     price: 487,
     name: "Saree",
-    imgSrc: "https://picsum.photos/400/300?random=101"
+    imgSrc: "https://source.unsplash.com/300x300/?saree&sig=1"
   },
   {
     price: 1299,
     name: "Leather Jacket",
-    imgSrc: "https://picsum.photos/400/300?random=102"
+    imgSrc: "https://source.unsplash.com/300x300/?jacket&sig=2"
   },
   {
     price: 699,
     name: "Sneakers",
-    imgSrc: "https://picsum.photos/400/300?random=103"
+    imgSrc: "https://source.unsplash.com/300x300/?sneakers&sig=3"
   },
   {
     price: 299,
     name: "T-Shirt",
-    imgSrc: "https://picsum.photos/400/300?random=104"
+    imgSrc: "https://source.unsplash.com/300x300/?tshirt&sig=4"
   },
   {
     price: 899,
     name: "Wrist Watch",
-    imgSrc: "https://picsum.photos/400/300?random=105"
+    imgSrc: "https://source.unsplash.com/300x300/?watch&sig=5"
   },
   {
     price: 1099,
     name: "Handbag",
-    imgSrc: "https://picsum.photos/400/300?random=106"
+    imgSrc: "https://source.unsplash.com/300x300/?handbag&sig=6"
   },
   {
     price: 349,
     name: "Sunglasses",
-    imgSrc: "https://picsum.photos/400/300?random=107"
+    imgSrc: "https://source.unsplash.com/300x300/?sunglasses&sig=7"
   },
   {
     price: 499,
     name: "Jeans",
-    imgSrc: "https://picsum.photos/400/300?random=108"
+    imgSrc: "https://source.unsplash.com/300x300/?jeans&sig=8"
   },
   {
     price: 2299,
     name: "Smartphone",
-    imgSrc: "https://picsum.photos/400/300?random=109 "
+    imgSrc: "https://source.unsplash.com/300x300/?smartphone&sig=9"
   },
   {
     price: 149,
     name: "Cap",
-    imgSrc: "https://picsum.photos/400/300?random=110"
+    imgSrc: "https://source.unsplash.com/300x300/?cap&sig=10"
   }
 ]
 )
@@ -67,15 +67,15 @@ export default function Home() {
 
   return (
     <div className="w-full ">
-      <Navbar liked={false}/>
-      <Banner/>
-     <div className="w-full bg-pink-600 p-3 text-white">Product</div>
+      <Navbar/>
+      
+
      <div className="m-auto text-center">
       {
         Data.map((ele,i)=>{
           return(
 <Item key={i}
-price={ele.price} name={ele.name} imgSrc={ele.imgSrc} isLiked={true}/>
+price={ele.price} name={ele.name} imgSrc={ele.imgSrc} isLiked={false}/>
           )
         })
       }

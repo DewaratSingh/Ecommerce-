@@ -10,11 +10,11 @@ import { useRouter } from 'next/navigation';
 export default function page() {
     const password = useRef(null)
 const handelPassword=()=>{
-    if (password.current.type=="text") {
-        password.current.type="password"
-    } else {
-        password.current.type="text"
-    }
+    // if (password.current.type=="text") {
+    //     password.current.type="password"
+    // } else {
+    //     password.current.type="text"
+    // }
 }
 
 const router=useRouter();
@@ -60,12 +60,14 @@ const router=useRouter();
               placeholder="password"
               required
             />
-            <div className='h-[50px] text-2xl flex items-center mt-5 border' onClick={handelPassword}>
-              <MdOutlineRemoveRedEye />
-            </div>
+            {/* <div className='h-[50px] text-2xl flex items-center mt-5 border-r-1 border-t-1 border-b-1' onClick={handelPassword}>
+              {
+                password.current && password.current.type === "text" ? <LuEyeClosed /> : <MdOutlineRemoveRedEye />
+              }
+            </div> */}
           </div>
           <br />
-          <input className=" border pl-5 pr-5 pt-3 pb-3 bg-pink-600" type="submit" value="Submit" />
+          <input className="bg-red-500 text-white px-4 py-2 rounded" type="submit" value="Submit" />
         </form>
         <br /><br /><br />
       </div>

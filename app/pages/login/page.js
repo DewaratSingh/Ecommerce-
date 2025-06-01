@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function page() {
   const [Radio, setRadio] = useState(false);
@@ -47,7 +48,7 @@ setLoad(true)
   };
  
   return (
-    <div>
+    <div >
       {Load ? "loading.. " : (
       <div className="m-auto w-[100%] max-w-[500px]">
         <h1 className="text-5xl">New Registration</h1>
@@ -122,9 +123,15 @@ setLoad(true)
             </div>
           )}
           <br />
-          <input className=" border pl-5 pr-5 pt-3 pb-3 bg-pink-600" type="submit" value="Submit" />
+          <input className="bg-red-500 text-white px-4 py-2 rounded" type="submit" value="Submit" />
         </form>
         <br /><br /><br />
+        <div className='text-blue-700 text-center'>
+        Already having account?{" "}
+        <Link href="/pages/signin" className="underline">
+          LogIn
+        </Link>
+      </div>
       </div>
       )}
     </div>

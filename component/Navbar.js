@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { MdHome } from "react-icons/md";
 import { FaOpencart } from "react-icons/fa6";
@@ -26,13 +27,13 @@ const handelLike = () => {
 }
 
   return (
-    <div className="flex justify-evenly items-center bg-pink-600 w-full h-11 text-3xl text-white">
-      <div className="flex gap-1.5 justify-center items-center">
+    <div className="flex justify-between items-center  px-0 sm:px-7 bg-amber-300 w-full h-16 text-3xl text-black ">
+      <div className="flex gap-1.5 justify-center items-center text-4xl">
         <FaOpencart />
-        <div>Meshow</div>
+       <div className="fascinate-inline-regular ">Meshow</div>
       </div>
-      <div className="flex gap-1.5 justify-center items-center border">
-        <input type="text" placeholder="Search" className="text-2xl"/>
+      <div className="flex gap-1.5 justify-center items-center bg-yellow-400 rounded-full px-2 py-1">
+        <input type="text" placeholder="Search" className="text-2xl border-none outline-none bg-transparent" />
         <div className="border-l-white">
           <CiSearch />
         </div>

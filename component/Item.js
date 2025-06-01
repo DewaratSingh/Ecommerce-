@@ -5,8 +5,8 @@ import { FaRegHeart } from "react-icons/fa";
 
 const Item = ({ price, name, imgSrc ,isLiked}) => {
   return (
-    <div className="inline-block h-[300px] w-[250px] bg-[#8786865b] rounded-2xl overflow-hidden m-2 relative transition hover:scale-105">
-      <div className="h-[250px] w-[250px] bg-[#8786865b] justify-center
+    <div className="inline-block h-[300px] w-[250px] bg-yellow-400 rounded-2xl overflow-hidden m-2 relative transition hover:scale-105">
+      <div className="h-[250px] w-[250px] bg-[#e2d194] justify-center
         items-center flex">
          
         <img 

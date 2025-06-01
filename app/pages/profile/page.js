@@ -1,11 +1,12 @@
 "use client";
 
 import { useSession, signIn } from "next-auth/react";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Navbar from "@/component/Navbar";
 import axios from "axios";
+import { CgProfile } from "react-icons/cg";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -36,19 +37,41 @@ export default function Dashboard() {
   return (
     <div>
       <Navbar />
-      <h1>Welcome to profile, {session?.user?.name}</h1>
-      <p>Email: {Data?.email}</p>
-      <p>Phone: {Data?.phone}</p>
-      <p>Address: {Data?.address}</p>
-      <p>Created At: {Data?.createdAt ? (Data.createdAt["$date"] || Data.createdAt) : ""}</p>
-      <p>{Data?.shop ? ( <div onClick={() => router.push(`/pages/Dashboard/${Data.shop}`)} className="border pl-5 pr-5 pt-3 pb-3 ml-4 bg-pink-600 inline-block">
-       Go to your shop 
-      </div> ):""}</p> 
-      <br /><br /><br />
-      <button onClick={() => signOut()} className="bg-red-500 text-white px-4 py-2 rounded">
-  Logout
-</button>
+      <div className="flex items-center justify-center w-full text-9xl">
+        <CgProfile />
+      </div>
+      <div className="flex items-center justify-center w-full text-space-x-4 ">
+        <div className="m-auto bg-amber-100 ">
+          <p className="h-[50%]">Welcome, {session?.user?.name}</p>
+          <p className="h-[50%]">Email: {Data?.email}</p>
+          <p className="h-[50%]">Phone: {Data?.phone}</p>
+          <p className="h-[50%]">Address: {Data?.address}</p>
+          <p className="h-[50%]">
+            Created At:{" "}
+            {Data?.createdAt ? Data.createdAt["$date"] || Data.createdAt : ""}
+          </p>
+        </div>
+      </div>
 
+      <div className="flex items-center justify-evenly w-full text-space-x-4 ">
+      <p className="h-[50%]">
+        {Data?.shop ? (
+          <div
+            onClick={() => router.push(`/pages/Dashboard/${Data.shop}`)}
+            className="bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Go to your shop
+          </div>
+        ) : (
+          ""
+        )}
+      </p>
+      <button
+        onClick={() => signOut()}
+        className="bg-red-500 text-white px-4 py-2 rounded"
+      >
+        Logout
+      </button></div>
     </div>
   );
 }

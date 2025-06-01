@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { useEffect,useState } from "react";
 import { useRouter, useParams } from "next/navigation";
@@ -9,7 +9,7 @@ import axios from "axios";
 export default function page() {
   const router = useRouter();
   const { slug } = useParams();
-  const [Data, setData] = useState({});
+  const [Data, setData] = useState([]);
 
     const { data: session, status } = useSession();
   
@@ -17,8 +17,12 @@ export default function page() {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.post("/api/shop/getdata",{slug:slug});
-        console.log("User profile data:", response.data);
-        setData(response.data.shop);  
+        setData(response.data.shop.shop);  
+        console.log("User profile data:", response.data.shop);
+        for(let i = 0; i < response.data.shop.shop.length; i++) {
+       //   const res= await axios.post("/api/shop/getdata",{slug:response.data.shop.shop[i]._id});
+         
+        }
       } catch (error) {
         console.error("Error fetching user profile:", error);
       }
@@ -68,7 +72,7 @@ export default function page() {
           </div>
         </div>
 
-        {Data?.shop?.map((item, index) => (
+        {Data.map((item, index) => (
           <div key={index} className="flex w-[800px] bg-pink-200">
             <div className="w-[200px] border-l-2 text-center overflow-x-clip">
               {item.name}
@@ -116,7 +120,7 @@ export default function page() {
 
       </div>
 
-      <div onClick={() => router.push(`/pages/addProduct`)} className="border pl-5 pr-5 pt-3 pb-3 ml-4 bg-pink-600 inline-block">
+      <div onClick={() => router.push(`/pages/addProduct/${slug}`)} className="border pl-5 pr-5 pt-3 pb-3 ml-4 bg-pink-600 inline-block">
         + Add Product
       </div>
     </div>

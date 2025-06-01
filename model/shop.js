@@ -5,11 +5,8 @@ const shop = new mongoose.Schema(
     phone: { type: Number },
     address: { type: String },
     email: { type: String },
-    product: [
-      {
-        id: { type: String },
-      },
-    ],
+    product: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }]
+
   },
   { timestamps: true }
 );

@@ -30,7 +30,7 @@ export async function POST(request) {
       address: Saddress,
       phone: Scontact,
       email: Semail,
-      product: [{ id: "first_product" }],
+      product: [],
     });
     await shop.save();
   }

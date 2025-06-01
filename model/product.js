@@ -6,7 +6,9 @@ const ProductSchema = new mongoose.Schema({
   realPrice: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
-  image: { type: String }, 
+  folderName: { type: String, required: true },
+  rating: { type: Number, default: 0 },
+  image: { type: Array, required: true },
 }, { timestamps: true });
 
 export default mongoose.models.Product || mongoose.model("Product", ProductSchema);

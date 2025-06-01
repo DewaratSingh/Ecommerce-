@@ -9,10 +9,15 @@ import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { IoCartSharp } from "react-icons/io5";
+import { useState } from "react";
+import { MdOutlineHome } from "react-icons/md";
 
 
-const Navbar = ({liked, cart=false}) => {
+const Navbar = () => {
 const router = useRouter();
+const [liked, setliked] = useState(false);
+const [cart, setcart] = useState(false);
+const [home, sethome] = useState(true);
 
 const handelaccount = () => {
     router.push("/pages/profile");  
@@ -20,10 +25,23 @@ const handelaccount = () => {
 
 const handelCart = () => {
     router.push("/pages/Cart");  
+    setcart(true);
+    sethome(false);
+    setliked(false);
+}
+
+const handelHome = () => {
+    router.push("/");  
+    sethome(true);
+    setcart(false);
+    setliked(false);
 }
 
 const handelLike = () => {
-    router.push("/pages/Liked");    
+    router.push("/pages/Liked");  
+    setliked(true);
+     sethome(false);
+    setcart(false);
 }
 
   return (
@@ -39,6 +57,7 @@ const handelLike = () => {
         </div>
       </div>
       <div className="flex gap-4 justify-center items-center">
+        {home?<MdHome onClick={handelHome} />:<MdOutlineHome  onClick={handelHome }/>}
         {liked ?<FaHeart onClick={handelLike}/>:<FaRegHeart onClick={handelLike}/>}
         {cart?<IoCartSharp onClick={handelCart} />:<IoCartOutline onClick={handelCart }/>}
         <CgProfile  onClick={handelaccount}/>

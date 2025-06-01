@@ -67,7 +67,7 @@ export default function Home() {
 
   return (
     <div className="w-full ">
-      <Navbar/>
+      {/* <Navbar/> */}
       
 
      <div className="m-auto text-center">

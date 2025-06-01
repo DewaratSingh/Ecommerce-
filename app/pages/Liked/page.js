@@ -80,8 +80,10 @@ export default function Home() {
 
 
   return (
+    <>
+        {status === "unauthenticated"? "":(
     <div className="w-full ">
-      <Navbar liked={true} />
+      {/* <Navbar liked={true} /> */}
       
 
      <div className="m-auto text-center">
@@ -96,5 +98,7 @@ price={ele.price} name={ele.name} imgSrc={ele.imgSrc} isLiked={false}/>
 
      </div>
     </div>
+        )}
+    </>
   );
 }

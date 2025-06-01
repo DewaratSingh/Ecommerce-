@@ -67,7 +67,7 @@ export default function Home() {
 
   return (
     <div className="w-full ">
-      <Navbar liked={false}/>
+      {/* <Navbar liked={false}/> */}
       <Banner/>
      <div className="w-full bg-amber-300 p-3 text-black flex gap-2 items-center ">
       <div className="h-[8px] w-[8px] bg-amber-400 rounded-full"></div>

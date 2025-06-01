@@ -18,6 +18,7 @@ export default function page() {
     }
   return (
      <div>
+  
           <div className="m-auto w-[100%] max-w-[500px]">
             <h1 className="text-5xl">Update Product</h1>
             <form action="">

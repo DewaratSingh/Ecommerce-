@@ -35,8 +35,10 @@ export default function Dashboard() {
   }
 
   return (
+    <>
+        {status === "unauthenticated"? "":(
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex items-center justify-center w-full text-9xl">
         <CgProfile />
       </div>
@@ -72,6 +74,7 @@ export default function Dashboard() {
       >
         Logout
       </button></div>
-    </div>
+    </div>)}
+    </>
   );
 }

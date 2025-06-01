@@ -79,8 +79,12 @@ const router=useRouter()
 
 
   return (
+    <>
+        {status === "unauthenticated"? "":
+    
+    (
     <div className="w-full ">
-      <Navbar liked={false} cart={true} />
+      {/* <Navbar liked={false} cart={true} /> */}
       
 
      <div className="m-auto text-center">
@@ -98,5 +102,7 @@ price={ele.price} name={ele.name} imgSrc={ele.imgSrc} isLiked={false} isCart={tr
 
      </div>
     </div>
+    ) }
+    </>
   );
 }

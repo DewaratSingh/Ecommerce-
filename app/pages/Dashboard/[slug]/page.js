@@ -9,30 +9,25 @@ import axios from "axios";
 export default function page() {
   const router = useRouter();
   const { slug } = useParams();
-  const [Data, setData] = useState([]);
+  const [Data, setData] = useState({});
+  const [products, setProducts] = useState([]);
 
-    const { data: session, status } = useSession();
-  
+  const { data: session, status } = useSession();
 
-    const fetchUserProfile = async () => {
-      try {
-        const response = await axios.post("/api/shop/getdata",{slug:slug});
-        setData(response.data.shop.shop);  
-        console.log("User profile data:", response.data.shop);
-        for(let i = 0; i < response.data.shop.shop.length; i++) {
-       //   const res= await axios.post("/api/shop/getdata",{slug:response.data.shop.shop[i]._id});
-         
-        }
-      } catch (error) {
-        console.error("Error fetching user profile:", error);
-      }
-     
-    };
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axios.post("/api/shop/getdata", { slug: slug });
+      setData(response.data.shop);
+      setProducts(response.data.shop.shop || []);
+      console.log("User profile data:", response.data.shop);
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
 
-
-    useEffect(() => {
-      if (status === "unauthenticated") {
-        router.push("/pages/signin");
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/pages/signin");
       }
       fetchUserProfile();
     }, [status]);
@@ -72,7 +67,7 @@ export default function page() {
           </div>
         </div>
 
-        {Data.map((item, index) => (
+        {products.map((item, index) => (
           <div key={index} className="flex w-[800px] bg-pink-200">
             <div className="w-[200px] border-l-2 text-center overflow-x-clip">
               {item.name}
@@ -94,29 +89,6 @@ export default function page() {
             </div>
           </div>
         ))}
-
-
-        <div className="flex w-[800px] bg-pink-200">
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            T- shirt
-          </div>
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            clothing
-          </div>
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            123
-          </div>
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            5
-          </div>
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            Edit
-          </div>
-          <div className="w-[200px] border-l-2 text-center overflow-x-clip">
-            Delete
-          </div>
-        </div>
-
 
       </div>
 
